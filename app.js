@@ -1,27 +1,10 @@
-const path = require("path");
 const express = require("express");
 const app = express();
 
-const HOSTNAME = "127.0.0.1";
-const PORT = 3000;
+app.get("/", (req, res) => {
+  res.json([{ name: "john" }, { name: "susan" }]);
+});
 
-// setup and middleware
-app.use(express.static("./public"));
-
-// get home page
-// app.get("/", (req, res) => {
-//   res.sendFile(path.resolve(__dirname, "navbar-app/index.html"));
-//    // 1. adding to static assets
-//    // 2. SSR - server side rendering
-// });
-
-// handle errors
-app.all("*"),
-  (req, res) => {
-    res.status(404).send("resource not found");
-  };
-
-// listen at
-app.listen(PORT, HOSTNAME, () => {
-  console.log(`server is listening at ${HOSTNAME}:${PORT}`);
+app.listen(5000, () => {
+  console.log("server is listening on port 5000....");
 });
